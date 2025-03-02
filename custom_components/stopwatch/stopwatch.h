@@ -8,7 +8,7 @@
 namespace esphome::clock {
 
 /// A stopwatch that tracks the time since it started.
-class Stopwatch : public PollingComponent {
+class StopwatchComponent : public PollingComponent {
   SUB_BUTTON(start)
   SUB_BUTTON(stop)
   SUB_BUTTON(reset)
@@ -32,25 +32,28 @@ class Stopwatch : public PollingComponent {
   bool is_running_ = false;
 };
 
-class StartButton : public button::Button, public Parented<Stopwatch> {
+class StartStopwatchButton : public button::Button,
+                             public Parented<StopwatchComponent> {
  public:
-  StartButton() = default;
+  StartStopwatchButton() = default;
 
  protected:
   void press_action() override { parent_->start(); }
 };
 
-class StopButton : public button::Button, public Parented<Stopwatch> {
+class StopStopwatchButton : public button::Button,
+                            public Parented<StopwatchComponent> {
  public:
-  StopButton() = default;
+  StopStopwatchButton() = default;
 
  protected:
   void press_action() override { parent_->stop(); }
 };
 
-class ResetButton : public button::Button, public Parented<Stopwatch> {
+class ResetStopwatchButton : public button::Button,
+                             public Parented<StopwatchComponent> {
  public:
-  ResetButton() = default;
+  ResetStopwatchButton() = default;
 
  protected:
   void press_action() override { parent_->reset(); }

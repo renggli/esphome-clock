@@ -33,16 +33,32 @@ wifi:
     password: !secret captive_portal_password
 captive_portal:
 
-# Stopwatch
+# A default stopwatch
 stopwatch:
   id: default_stopwatch
   start:
-    name: Start
+    name: Stopwatch Start
   stop:
-    name: Stop
+    name: Stopwatch Stop
   reset:
-    name: Reset
+    name: Stopwatch Reset
   running:
-    name: Running
+    name: Stopwatch Running
   elapsed:
-    name: Elapsed
+    name: Stopwatch Elapsed
+
+# A default timer
+timer:
+  id: default_timer
+  duration:
+    name: Timer Duration
+  start:
+    name: Timer Start
+  pause:
+    name: Timer Pause
+  stop:
+    name: Timer Stop
+  state:
+    name: Timer State
+  remaining:
+    name: Timer Remaining

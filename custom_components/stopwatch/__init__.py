@@ -15,24 +15,24 @@ CONF_RUNNING_BINARY_SENSOR = 'running'
 CONF_ELAPSED_SENSOR = 'elapsed'
 
 clock_ns = cg.esphome_ns.namespace('clock')
-Stopwatch = clock_ns.class_('Stopwatch', cg.PollingComponent)
+StopwatchComponent = clock_ns.class_('StopwatchComponent', cg.PollingComponent)
 
-StartButton = clock_ns.class_('StartButton', button.Button)
-StopButton = clock_ns.class_('StopButton', button.Button)
-ResetButton = clock_ns.class_('ResetButton', button.Button)
+StartStopwatchButton = clock_ns.class_('StartStopwatchButton', button.Button)
+StopStopwatchButton = clock_ns.class_('StopStopwatchButton', button.Button)
+ResetStopwatchButton = clock_ns.class_('ResetStopwatchButton', button.Button)
 
 CONFIG_SCHEMA = cv.Schema({
-    cv.GenerateID(): cv.declare_id(Stopwatch),
+    cv.GenerateID(): cv.declare_id(StopwatchComponent),
     cv.Optional(CONF_START_BUTTON): button.button_schema(
-        StartButton,
+        StartStopwatchButton,
         icon='mdi:timer-play-outline',
     ),
     cv.Optional(CONF_STOP_BUTTON): button.button_schema(
-        StopButton,
+        StopStopwatchButton,
         icon='mdi:timer-stop-outline',
     ),
     cv.Optional(CONF_RESET_BUTTON): button.button_schema(
-        ResetButton,
+        ResetStopwatchButton,
         icon='mdi:restart',
     ),
     cv.Optional(CONF_RUNNING_BINARY_SENSOR): binary_sensor.binary_sensor_schema(
