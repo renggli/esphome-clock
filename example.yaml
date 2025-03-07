@@ -33,6 +33,12 @@ wifi:
     password: !secret captive_portal_password
 captive_portal:
 
+# External components
+external_components:
+  - source:
+      type: local
+      path: components
+
 # A default stopwatch
 stopwatch:
   id: default_stopwatch
