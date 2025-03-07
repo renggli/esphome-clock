@@ -6,11 +6,11 @@
 [![GitHub Stars](https://img.shields.io/github/stars/renggli/esphome-clock.svg)](https://github.com/renggli/esphome-clock/stargazers)
 [![GitHub License](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/renggli/esphome-clock/main/LICENSE)
 
-A set of [ESPHome](https://esphome.io) custom components to simulate a timer and
-stopwatch as seen on common clocks. Both interfaces can be controlled from
-lambda functions or [Home Assistant](https://www.home-assistant.io/) sensors.
+A set of [ESPHome](https://esphome.io) external components to simulate a timer
+and stopwatch as seen on your mobile phone. Both components can be controlled
+from lambda functions or [Home Assistant](https://www.home-assistant.io/) sensors.
 
-To include in your own configuration add the following external component:
+To include them in your own configuration add the following external component:
 
 ```yaml
 external_components:
