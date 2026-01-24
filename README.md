@@ -29,7 +29,7 @@ timer:
   id: my_timer
 ```
 
-Use lambda functions to start, stop or read the state of your clocks. Find the
+Use lambda functions to start, stop, or read the state of your clocks. Find the
 documentation of their API in [timer.h](components/timer/timer.h) and
 [stopwatch.h](components/stopwatch/stopwatch.h).
 

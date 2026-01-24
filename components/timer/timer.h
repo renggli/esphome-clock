@@ -25,21 +25,33 @@ class TimerComponent : public PollingComponent {
   SUB_TEXT_SENSOR(state)
   SUB_SENSOR(remaining)
 
- public:
+public:
   void dump_config() override;
   void update() override;
 
+  /// Set the duration of the timer in milliseconds.
   void set_duration(uint32_t duration_ms);
+
+  /// Get the duration of the timer in milliseconds.
   uint32_t get_duration() { return duration_ms_; }
 
+  /// Start the timer. If paused, it resumes from where it left off.
   void start();
+
+  /// Pause the timer. If running, it stops and can be resumed later.
   void pause();
+
+  /// Stop the timer and reset the elapsed time.
   void stop();
 
-  const char* get_state();
+  /// Get the current state of the timer as a string (Stopped, Running, Paused,
+  /// Expired).
+  const char *get_state();
+
+  /// Get the remaining time in milliseconds.
   int get_remaining();
 
- protected:
+protected:
   TimerState state_ = TimerState::STOPPED;
   uint32_t duration_ms_ = 0;
   uint32_t elapsed_ms_ = 0;
@@ -48,10 +60,10 @@ class TimerComponent : public PollingComponent {
 
 class DurationTimerNumber : public number::Number,
                             public Parented<TimerComponent> {
- public:
+public:
   DurationTimerNumber() = default;
 
- protected:
+protected:
   void control(float value) override {
     publish_state(value);
     parent_->set_duration((uint32_t)round(value));
@@ -60,28 +72,28 @@ class DurationTimerNumber : public number::Number,
 
 class StartTimerButton : public button::Button,
                          public Parented<TimerComponent> {
- public:
+public:
   StartTimerButton() = default;
 
- protected:
+protected:
   void press_action() override { parent_->start(); }
 };
 
 class PauseTimerButton : public button::Button,
                          public Parented<TimerComponent> {
- public:
+public:
   PauseTimerButton() = default;
 
- protected:
+protected:
   void press_action() override { parent_->pause(); }
 };
 
 class StopTimerButton : public button::Button, public Parented<TimerComponent> {
- public:
+public:
   StopTimerButton() = default;
 
- protected:
+protected:
   void press_action() override { parent_->stop(); }
 };
 
-}  // namespace esphome::clock
+} // namespace esphome::clock
