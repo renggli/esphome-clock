@@ -25,7 +25,7 @@ class TimerComponent : public PollingComponent {
   SUB_TEXT_SENSOR(state)
   SUB_SENSOR(remaining)
 
-public:
+ public:
   void dump_config() override;
   void update() override;
 
@@ -46,12 +46,12 @@ public:
 
   /// Get the current state of the timer as a string (Stopped, Running, Paused,
   /// Expired).
-  const char *get_state();
+  const char* get_state();
 
   /// Get the remaining time in milliseconds.
   int get_remaining();
 
-protected:
+ protected:
   TimerState state_ = TimerState::STOPPED;
   uint32_t duration_ms_ = 0;
   uint32_t elapsed_ms_ = 0;
@@ -60,10 +60,10 @@ protected:
 
 class DurationTimerNumber : public number::Number,
                             public Parented<TimerComponent> {
-public:
+ public:
   DurationTimerNumber() = default;
 
-protected:
+ protected:
   void control(float value) override {
     publish_state(value);
     parent_->set_duration((uint32_t)round(value));
@@ -72,28 +72,28 @@ protected:
 
 class StartTimerButton : public button::Button,
                          public Parented<TimerComponent> {
-public:
+ public:
   StartTimerButton() = default;
 
-protected:
+ protected:
   void press_action() override { parent_->start(); }
 };
 
 class PauseTimerButton : public button::Button,
                          public Parented<TimerComponent> {
-public:
+ public:
   PauseTimerButton() = default;
 
-protected:
+ protected:
   void press_action() override { parent_->pause(); }
 };
 
 class StopTimerButton : public button::Button, public Parented<TimerComponent> {
-public:
+ public:
   StopTimerButton() = default;
 
-protected:
+ protected:
   void press_action() override { parent_->stop(); }
 };
 
-} // namespace esphome::clock
+}  // namespace esphome::clock

@@ -15,7 +15,7 @@
 namespace esphome::clock {
 
 namespace {
-static const char *const TAG = "clock.stopwatch";
+static const char* const TAG = "clock.stopwatch";
 }
 
 void StopwatchComponent::dump_config() {

@@ -15,7 +15,7 @@ class StopwatchComponent : public PollingComponent {
   SUB_BINARY_SENSOR(running)
   SUB_SENSOR(elapsed)
 
-public:
+ public:
   void dump_config() override;
   void update() override;
 
@@ -34,7 +34,7 @@ public:
   /// Get the elapsed time in milliseconds.
   uint32_t get_elapsed();
 
-protected:
+ protected:
   uint32_t start_ms_ = 0;
   uint32_t elapsed_ms_ = 0;
   bool is_running_ = false;
@@ -42,29 +42,29 @@ protected:
 
 class StartStopwatchButton : public button::Button,
                              public Parented<StopwatchComponent> {
-public:
+ public:
   StartStopwatchButton() = default;
 
-protected:
+ protected:
   void press_action() override { parent_->start(); }
 };
 
 class StopStopwatchButton : public button::Button,
                             public Parented<StopwatchComponent> {
-public:
+ public:
   StopStopwatchButton() = default;
 
-protected:
+ protected:
   void press_action() override { parent_->stop(); }
 };
 
 class ResetStopwatchButton : public button::Button,
                              public Parented<StopwatchComponent> {
-public:
+ public:
   ResetStopwatchButton() = default;
 
-protected:
+ protected:
   void press_action() override { parent_->reset(); }
 };
 
-} // namespace  esphome::clock
+}  // namespace  esphome::clock
