@@ -19,7 +19,7 @@ static const char* const TAG = "clock.stopwatch";
 }
 
 void StopwatchComponent::dump_config() {
-  ESP_LOGCONFIG(TAG, "Stopwatch:", this);
+  ESP_LOGCONFIG(TAG, "Stopwatch");
   LOG_BUTTON("  ", "StartButton", start_button_);
   LOG_BUTTON("  ", "StopButton", stop_button_);
   LOG_BUTTON("  ", "ResetButton", reset_button_);

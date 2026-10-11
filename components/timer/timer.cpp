@@ -20,7 +20,7 @@ static const char* const TAG = "clock.timer";
 }
 
 void TimerComponent::dump_config() {
-  ESP_LOGCONFIG(TAG, "Timer:", this);
+  ESP_LOGCONFIG(TAG, "Timer");
   LOG_NUMBER("  ", "DurationNumber", duration_number_);
   LOG_BUTTON("  ", "StartButton", start_button_);
   LOG_BUTTON("  ", "PauseButton", pause_button_);
